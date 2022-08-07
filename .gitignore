@@ -1,5 +1,6 @@
 .gradle
 /build/
+grandle/gradle
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -12,3 +13,12 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
+
+/grandle/settings.gradle
+/grandle/gradlew
+/osipovmrTextBot
+/grandle/gradlew.bat
+/grandle/build/tmp/compileJava/previous-compilation-data.bin
+/grandle/build/
+/.idea/modules.xml
+/.idea/vcs.xml
