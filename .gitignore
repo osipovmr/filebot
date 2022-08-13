@@ -20,5 +20,4 @@ gradle-app.setting
 /grandle/gradlew.bat
 /grandle/build/tmp/compileJava/previous-compilation-data.bin
 /grandle/build/
-/.idea/modules.xml
-/.idea/vcs.xml
+.idea

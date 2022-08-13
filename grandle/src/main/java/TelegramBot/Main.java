@@ -12,7 +12,7 @@ public class Main {
         try {
             TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
             botsApi.registerBot(new OsipovBot());
-            logger.info("Hello from logger Main.class!");
+            logger.info("Main.class is active.");
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
