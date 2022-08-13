@@ -16,6 +16,8 @@ dependencies {
     implementation group: 'org.telegram', name: 'telegrambots', version: '6.1.0'
     // https://mvnrepository.com/artifact/org.telegram/telegrambots-abilities
     implementation group: 'org.telegram', name: 'telegrambots-abilities', version: '6.1.0'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-jdk14
+    implementation group: 'org.slf4j', name: 'slf4j-jdk14', version: '1.7.5'
 
 }
 
