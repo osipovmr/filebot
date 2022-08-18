@@ -1,1 +1,2 @@
 Alyona! This is inside file txt)
+Second line

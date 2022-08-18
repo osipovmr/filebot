@@ -6,14 +6,17 @@ import java.io.IOException;
 
 public class ReadFileTxt {
     public static String text (String file_name) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(Constants.downloadPlace + file_name));
-        String s = null;
+        BufferedReader reader = new BufferedReader(new FileReader(Constants.downloadPlace + file_name));
+        StringBuilder everything = null;
         try {
-            s = br.readLine();
+            everything = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                everything.append(line +"\n");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        br.close();
-        return s;
+        return everything.toString();
     }
 }
