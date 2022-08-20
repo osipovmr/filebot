@@ -40,8 +40,7 @@ public class OsipovBot extends AbilityBot {
             Main.logger.info("File ID: " + fileId);
             try {
                 UploadFile.uploadFile(fileName, fileId);
-                String textFromFileTxt = ReadFileTxt.text(fileName);
-                outMess.setText("Get file " + fileName + "\n" + textFromFileTxt);
+                outMess.setText("Get file " + fileName + "\n"+ ReadFileXlxs.xlxs(fileName));
                 outMess.setChatId(chatId);
                 execute(outMess);
             } catch (IOException e) {
