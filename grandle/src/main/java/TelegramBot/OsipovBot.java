@@ -8,7 +8,6 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.io.*;
-import java.util.List;
 
 public class OsipovBot extends AbilityBot {
 
@@ -41,11 +40,15 @@ public class OsipovBot extends AbilityBot {
             try {
                 UploadFile.uploadFile(fileName, fileId);
                 outMess.setText("Get file " + fileName + "\n"+ ReadFileXlxs.xlxs(fileName));
+                String requestBody = ReadFileXlxs.xlxs(fileName);
+                System.out.println(Post.http(requestBody));
                 outMess.setChatId(chatId);
                 execute(outMess);
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (TelegramApiException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
