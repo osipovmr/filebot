@@ -13,13 +13,12 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 public class Post {
-    public static String http(String query) throws IOException, InterruptedException, ExecutionException {
+    public static String http (String query) throws IOException, InterruptedException, ExecutionException {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:4567/postAirport"))
                 .POST(HttpRequest.BodyPublishers.ofString(query))
                 .build();
-        Main.logger.info(query);
         CompletableFuture<HttpResponse<String>> futureResponse = client.sendAsync(request, HttpResponse.BodyHandlers.ofString());
         HttpResponse<String> response = futureResponse.get();
         return response.body();

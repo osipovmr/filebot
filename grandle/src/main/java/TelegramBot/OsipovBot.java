@@ -39,9 +39,9 @@ public class OsipovBot extends AbilityBot {
             Main.logger.info("File ID: " + fileId);
             try {
                 UploadFile.uploadFile(fileName, fileId);
-                outMess.setText("Get file " + fileName + "\n"+ ReadFileXlxs.xlxs(fileName));
-                String requestBody = ReadFileXlxs.xlxs(fileName);
-                System.out.println(Post.http(requestBody));
+                String requestBody = null;
+                requestBody = ReadFileXlxs.xlxs(fileName);
+                outMess.setText("Get file " + fileName + "\n" + "Request: " + ReadFileXlxs.xlxs(fileName) + "\n" + "Answer: " + Post.http(requestBody));
                 outMess.setChatId(chatId);
                 execute(outMess);
             } catch (IOException e) {
