@@ -38,10 +38,11 @@ public class OsipovBot extends AbilityBot {
             Main.logger.info("File name: " + fileName);
             Main.logger.info("File ID: " + fileId);
             try {
-                UploadFile.uploadFile(fileName, fileId);
-                String requestBody = null;
-                requestBody = ReadFileXlxs.xlxs(fileName);
-                outMess.setText("Get file " + fileName + "\n" + "Request: " + ReadFileXlxs.xlxs(fileName) + "\n" + "Answer: " + Post.http(requestBody));
+                UploadFile.uploadFile(fileName, fileId);    //скачал файл
+                String requestBody = ReadFileXlxs.xlxs(fileName);   //вытащил из файла текст запроса, прочитав файл
+                String answer = Post.http(requestBody);   //ответ
+                JSON2CSV.Format(answer);
+                outMess.setText("Get file " + fileName + "\n" + "Request: " + requestBody + "\n" + "Answer: " + answer);
                 outMess.setChatId(chatId);
                 execute(outMess);
             } catch (IOException e) {
