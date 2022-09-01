@@ -21,3 +21,5 @@ gradle-app.setting
 /grandle/build/tmp/compileJava/previous-compilation-data.bin
 /grandle/build/
 .idea
+.idea/misc.xml
+.idea/gradle.xml

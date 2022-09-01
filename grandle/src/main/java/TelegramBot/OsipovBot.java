@@ -3,12 +3,12 @@ package TelegramBot;
 import org.telegram.abilitybots.api.bot.AbilityBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Document;
+import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.io.*;
-import java.util.List;
 
 public class OsipovBot extends AbilityBot {
 
@@ -39,14 +39,24 @@ public class OsipovBot extends AbilityBot {
             Main.logger.info("File name: " + fileName);
             Main.logger.info("File ID: " + fileId);
             try {
-                UploadFile.uploadFile(fileName, fileId);
-                String textFromFileTxt = ReadFileTxt.text(fileName);
-                outMess.setText("Get file " + fileName + "\n" + textFromFileTxt);
-                outMess.setChatId(chatId);
-                execute(outMess);
+                UploadFile.uploadFile(fileName, fileId);    //скачал файл
+                String requestBody = ReadFileXlxs.xlxs(fileName);   //вытащил из файла текст запроса, прочитав файл
+                Main.logger.info(requestBody);
+                String answer = Post.http(requestBody);   //ответ
+                JSON2CSV.Format(answer);
+                //outMess.setText("Get file " + fileName + "\n" + "Request: " + requestBody + "\n" + "Answer: " + answer);
+                //outMess.setChatId(chatId);
+                //execute(outMess);
+                org.telegram.telegrambots.meta.api.methods.send.SendDocument sendDocument = new org.telegram.telegrambots.meta.api.methods.send.SendDocument();
+                sendDocument.setChatId(chatId);
+                //sendDocument.setDocument(JSON2CSV.file);
+                sendDocument.setDocument(new InputFile(new File("D:/IT/filebot/grandle/src/main/resources/fromJSON.csv")));
+                execute(sendDocument);
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (TelegramApiException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
