@@ -1,9 +1,5 @@
 package TelegramBot;
 
-
-import org.apache.http.HttpEntity;
-import org.apache.http.util.EntityUtils;
-
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
